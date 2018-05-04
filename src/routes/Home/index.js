@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import LoadingIndicator from 'react-loading-indicator';
 
 import SearchForm from 'components/SearchForm';
 import Matches from 'components/Matches';
@@ -27,7 +28,13 @@ class Home extends Component {
     return (
       <div>
         <SearchForm onSearch={this.onSearch} />
-        <Matches list={match.list} />
+        <div className="matches-list">
+          { match.requesting ?
+            <LoadingIndicator className="loader" segmentWidth={8} />
+            :
+            <Matches list={match.list} />
+          }
+        </div>
       </div>
     );
   }

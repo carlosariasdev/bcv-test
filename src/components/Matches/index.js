@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Matches({ list }) {
   return (
-    <table className="matches-list">
+    <table>
       <thead>
         <td>Match Number</td>
         <td>Home</td>
