@@ -5,6 +5,7 @@ import LoadingIndicator from 'react-loading-indicator';
 
 import SearchForm from 'components/SearchForm';
 import Matches from 'components/Matches';
+import Error from 'components/Error';
 
 import { fetchMatches } from 'redux/match/action';
 
@@ -22,18 +23,26 @@ class Home extends Component {
     this.props.fetchMatchesRequest(code);
   }
 
-  render() {
+  renderResult = () => {
     const { match } = this.props;
 
+    if (match.requesting) {
+      return <LoadingIndicator className="loader" segmentWidth={8} />;
+    }
+
+    if (match.error) {
+      return <Error text="Something went wrong. Please try again!" />;
+    }
+
+    return <Matches list={match.list} />;
+  }
+
+  render() {
     return (
       <div>
         <SearchForm onSearch={this.onSearch} />
         <div className="matches-list">
-          { match.requesting ?
-            <LoadingIndicator className="loader" segmentWidth={8} />
-            :
-            <Matches list={match.list} />
-          }
+          { this.renderResult() }
         </div>
       </div>
     );
