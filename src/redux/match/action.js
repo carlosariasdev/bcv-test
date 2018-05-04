@@ -29,7 +29,7 @@ export function fetchMatches(code) {
   return (dispatch) => {
     dispatch(fetchMatchesRequest());
 
-    http(`matches/country?fifa_code=${code}`)
+    http(`matches/country?fifa_code=${code.toUpperCase()}`)
       .then(matches => dispatch(fetchMatchesSuccess(matches)))
       .catch(error => dispatch(fetchMatchesFailure(error)));
   };
