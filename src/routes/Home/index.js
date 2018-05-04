@@ -1,5 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-export default function Home() {
-  return <h1>Hello BCV!</h1>;
+import SearchForm from 'components/SearchForm';
+
+class Home extends Component {
+  onSearch = () => {
+    console.log("API called");
+  }
+
+  render() {
+    return(
+      <SearchForm onSearch={this.onSearch} />
+    );
+  }
 }
+
+export default Home;
