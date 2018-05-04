@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import SearchForm from 'components/SearchForm';
+import Matches from 'components/Matches';
 
 import { fetchMatches } from 'redux/match/action';
 
@@ -21,9 +22,13 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.props.match);
+    const { match } = this.props;
+
     return (
-      <SearchForm onSearch={this.onSearch} />
+      <div>
+        <SearchForm onSearch={this.onSearch} />
+        <Matches list={match.list} />
+      </div>
     );
   }
 }
