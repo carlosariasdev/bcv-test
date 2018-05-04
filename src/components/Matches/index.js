@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Matches({ list }) {
   return (
-    <table>
+    <table className="matches-list">
       <thead>
         <td>Match Number</td>
         <td>Home</td>
@@ -20,7 +20,7 @@ function Matches({ list }) {
             <td>{match.home_team.country}</td>
             <td>{match.away_team.country}</td>
             <td>{match.location}</td>
-            <td>{match.datetime}</td>
+            <td>{new Date(match.datetime).toLocaleString()}</td>
             <td>{match.status}</td>
             <td>{match.winner || 'N/A'}</td>
           </tr>
