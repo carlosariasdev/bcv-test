@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 
 class SearchForm extends Component {
   state = {
-    fifaCode: '',
+    code: '',
   };
 
-  handleCodeChange = (fifaCode) => {
-    this.setState({ fifaCode });
+  handleCodeChange = (e) => {
+    this.setState({ code: e.target.value });
   }
 
   handleSubmit = (e) => {
     const { onSearch } = this.props;
-    const { fifaCode } = this.state;
+    const { code } = this.state;
 
     e.preventDefault();
-    onSearch(fifaCode);
+    onSearch(code);
   }
 
   render() {
