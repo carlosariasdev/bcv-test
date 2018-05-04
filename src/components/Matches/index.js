@@ -5,13 +5,15 @@ function Matches({ list }) {
   return (
     <table>
       <thead>
-        <td>Match Number</td>
-        <td>Home</td>
-        <td>Away</td>
-        <td>Location</td>
-        <td>Date/Time</td>
-        <td>Status</td>
-        <td>Winner</td>
+        <tr>
+          <th>Match Number</th>
+          <th>Home</th>
+          <th>Away</th>
+          <th>Location</th>
+          <th>Date/Time</th>
+          <th>Status</th>
+          <th>Winner</th>
+        </tr>
       </thead>
       <tbody>
         { list.map(match => (
@@ -31,19 +33,21 @@ function Matches({ list }) {
 }
 
 Matches.propTypes = {
-  list: PropTypes.arrayOf({
-    match_number: PropTypes.number.isRequired,
-    home_team: PropTypes.shape({
-      country: PropTypes.string.isRequired,
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      match_number: PropTypes.number.isRequired,
+      home_team: PropTypes.shape({
+        country: PropTypes.string.isRequired,
+      }),
+      away_team: PropTypes.shape({
+        country: PropTypes.string.isRequired,
+      }),
+      location: PropTypes.string.isRequired,
+      datetime: PropTypes.string.isRequired,
+      status: PropTypes.string.isRequired,
+      winner: PropTypes.string.isRequired,
     }),
-    away_team: PropTypes.shape({
-      country: PropTypes.string.isRequired,
-    }),
-    location: PropTypes.string.isRequired,
-    datetime: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    winner: PropTypes.string.isRequired,
-  }).isRequired,
+  ).isRequired,
 };
 
 export default Matches;
